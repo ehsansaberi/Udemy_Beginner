@@ -1,0 +1,5 @@
+bill_amount = float(input("How much is the bill? \n"))
+person_amount = int(input("How many people are there? \n"))
+tip_amount = float(input("How much you want to tip? \n %"))
+each_ppl_payment = float(bill_amount + bill_amount * tip_amount / 100) / person_amount
+print(f"Each person should pay $ {each_ppl_payment}")
