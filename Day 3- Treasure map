@@ -1,0 +1,23 @@
+print("Welcome to Treasure Island. \nYour mission is to find the treasure.\nChoose your steps carefully.")
+first_step = input("Which one do you select left or right. Type L or R \n").lower()
+if first_step == "l":
+    second_step = input("You lucky. You reach to lake. Which one do you select? Swim or wait. Type S or W \n").lower()
+    if second_step == "w":
+        third_step = input(
+            "You lucky. You reach to doors. Which one do you select? Blue, Yellow or red. Type B, Y or R\n").lower()
+        if third_step == "y":
+            print("You Win, Congratulations")
+        elif third_step == "r":
+            print("Burned by fire. Game Over")
+        elif third_step == "b":
+            print("Eaten by beasts. Game Over")
+        else:
+            print("You entered a wrong letter. You even dont know how to enter a key. Game Over")
+    elif second_step == "s":
+        print("Eaten by sharks. Game Over")
+    else:
+        print("You entered a wrong letter. You even dont know how to enter a key. Game Over")
+elif first_step == "r":
+    print("Fell into wholes. Game Over")
+else:
+    print("You entered a wrong letter. You even dont know how to enter a key. Game Over")
