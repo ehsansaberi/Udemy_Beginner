@@ -1,0 +1,31 @@
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
+
+
+def coder(input_txt, shift_amount, direction_mark):
+    if direction_mark == "d":
+        shift_amount *= -1
+    coded_txt = ""
+    for char in input_txt:
+        if char in alphabet:
+            letter_index = alphabet.index(char)
+            new_index = letter_index + shift_amount
+            if new_index > 26:
+                new_index %= 26
+            letter_index_new = alphabet[new_index]
+            coded_txt += letter_index_new
+        else:
+            coded_txt += char
+    print(f"coded text is: \n {coded_txt}")
+
+
+repeat = True
+while repeat:
+    direction = input("Type 'e' to encrypt, type 'd' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+    coder(input_txt=text, shift_amount=shift, direction_mark=direction)
+    should_repeat = input("Do you want to continue. Type 'Y' or 'N' ").upper()
+    if should_repeat == "N":
+        print("See you next time. BYE")
+        repeat = False
