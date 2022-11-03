@@ -1,0 +1,36 @@
+#from hangman_art import logo
+# print(f"{logo} \n\n")
+
+word = "ehsan"
+display = []
+for _ in range(len(word)):
+    display.append("_")
+print(f"Here is your word to guess: \n {display}")
+
+lives = 7
+end_of_game = False
+while not end_of_game:
+    guess = input("What is your guess letter?  ").lower()
+    if guess in display:
+        print(f"You have already chosen the {guess}")
+    for position in range(len(word)):
+        letter = word[position]
+        if guess == letter:
+            display[position] = letter
+            print(display)
+            if "_" not in display:
+                print("Well done")
+                end_of_game = True
+    if guess not in word:
+        print(f"{guess} is not in word")
+        lives -= 1
+        if lives == 0:
+            print(f"You are out of lives. \n The word was {word}")
+            end_of_game = True
+            print(lives)
+
+
+
+
+
+
