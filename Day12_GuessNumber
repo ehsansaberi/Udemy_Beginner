@@ -1,0 +1,51 @@
+from random import randint
+
+HARD_LIVES = 5
+NORMAL_LIVES = 7
+EASY_LIVES = 10
+
+fix_num = randint(1, 100)
+print(f" Psst, here is the number {fix_num}")
+print("Welcome to number guessing game")
+
+
+def level_finder():
+    level = input("Please choose your level to go. 'E' for easy, 'N' for normal and 'H' for Hard. \n").lower()
+    if level == "e":
+        print(f"You have {EASY_LIVES} lives to go")
+        return EASY_LIVES
+    if level == "n":
+        print(f"You have {NORMAL_LIVES} lives to go")
+        return NORMAL_LIVES
+    if level == "h":
+        print(f"You have {HARD_LIVES} lives to go")
+        return HARD_LIVES
+
+
+def num_checker(guess, fix):
+    """compare the guessed number and fix one"""
+    if guess > fix:
+        print("Too HIGH")
+        return False
+    elif guess < fix:
+        print("Too LOW")
+        return False
+    elif guess == fix:
+        print(f"You did it. the number was {fix}")
+        return True
+
+
+lives = level_finder()
+game_over = False
+while not game_over:
+
+    guessed_num = int(input("What is in your mind? "))
+    if not num_checker(guess=guessed_num, fix=fix_num):
+        lives -= 1
+        if lives > 0:
+            print(f"You have {lives} remaining")
+        else:
+            print("You ran out of your remaining lives. Game Over")
+            game_over = True
+    else:
+        game_over = True
