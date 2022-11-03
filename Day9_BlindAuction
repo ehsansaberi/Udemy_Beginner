@@ -1,0 +1,40 @@
+from art import logo
+
+print(logo)
+print("Welcome to Blind Auction")
+
+bid_dictionary = {}
+
+
+def call_for_bid(bid_dict):
+    """Each time ask for a person to bid and add his bid amount to dic"""
+
+    bidder_name = input("What is your name? ").title()
+    bid_amount = int(input("How much you want to bid?\n$ "))
+    bid_dict[bidder_name] = bid_amount
+
+
+def max_bid_finder(bid_dict):
+    """take the dic amd return winner adn max amount of bids"""
+    max_bid = 0
+    for key in bid_dict:
+        if bid_dict[key] > max_bid:
+            max_bid = bid_dict[key]
+            winner = key
+
+    return winner, max_bid
+
+
+call_for_bid(bid_dictionary)
+auction_finish = False
+
+while not auction_finish:
+    shall_continue = input("Is there another person to bid? type 'Y' or 'N'  ").lower()
+    if shall_continue == "y":
+        call_for_bid(bid_dictionary)
+    else:
+        auction_finish = True
+        max_bid_finder(bid_dictionary)
+
+result = max_bid_finder(bid_dictionary)
+print(f"The auction is over. The winner is {result[0].title()}, with ${result[1]}")
