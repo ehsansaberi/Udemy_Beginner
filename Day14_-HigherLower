@@ -1,0 +1,43 @@
+from data import data
+from random import choice
+
+
+def creator(db):
+    """Create and choose a new case each time"""
+    return choice(db)
+
+
+def answer_check(a, b, answered):
+    if a > b:
+        if answered == "a":
+            return True
+        else:
+            return False
+    else:
+        if answered == "b":
+            return True
+        else:
+            return False
+
+
+score = 0
+game_over = False
+caseA = creator(data)
+while not game_over:
+
+    caseB = creator(data)
+    if caseB == caseA:
+        caseB = creator(data)
+    print(f'{caseA["name"]}, {caseA["description"]}, {caseA["country"]}, {caseA["follower_count"]}')
+    print("VS")
+    print(f'{caseB["name"]}, {caseB["description"]}, {caseB["country"]},{caseB["follower_count"]}')
+    answer = input("What is your opinion ").lower()
+    if answer_check(a=caseA["follower_count"], b=caseB["follower_count"], answered=answer):
+        print("well done")
+        score += 1
+        print(f"Your score: {score}")
+        caseA = caseB
+    else:
+        print("shiiiiiiit")
+        print(f"Your last score: {score}")
+        game_over = True
